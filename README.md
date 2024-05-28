@@ -61,9 +61,9 @@ public class LambdaExample {
                 .collect(Collectors.toList());               // Coleta os resultados em uma lista
 
         String concat = result.stream()
-                .collect(Collectors.collectingAndThen(
-                        Collectors.joining(", "),
-                        resultConcat -> resultConcat
+                .collect(Collectors.collectingAndThen( // Aplica um segundo coletor em um resultado intermediário
+                        Collectors.joining(", "), // Primeiro coletor: concatena os nomes com ", " como separador
+                        resultConcat -> resultConcat // Função de transformação: adiciona um prefixo ao resultado
                 ));
 
         // Imprimindo a lista resultante
